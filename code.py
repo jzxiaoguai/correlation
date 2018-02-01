@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #卡号
-file1=open("/Users/didi/Desktop/card_no","r")
+file1=open("文件地址/rd_no","r")
 card=[]
 for line in file1.readlines():
     words=line.split('\t')
@@ -9,8 +9,8 @@ for line in file1.readlines():
 file1.close()
 
 #给出卡号标签，存放到index中  处理之后的标签和原数据粘贴到一起，也可以用dataframe字段拼接实现
-file2=open("/Users/didi/Desktop/card_all.txt","r")
-file3=open("/Users/didi/Desktop/index.txt","w")
+file2=open("文件地址/card_all.txt","r")
+file3=open("文件地址/index.txt","w")
 count1=0
 count=0
 for line in file2.readlines():
@@ -33,7 +33,7 @@ from scipy.stats import pearsonr
 
 file4=pd.read_csv("/Users/didi/Desktop/index.txt",sep='\t',encoding='utf-8') 
 #（1）获取列名称
-file5=open("/Users/didi/Desktop/index.txt","r")
+file5=open("文件地址/index.txt","r")
 col_name=[]
 for line in file5.readlines(1):
     words=line.strip().split('\t')
@@ -77,10 +77,10 @@ for i in cate:
 '''
 f检验示例，需要删除数据中的null和缺失值
 for i in range(7498):
-    if file4['套现模型得分'][i]=='null':
-        file4['套现模型得分'][i]=None
-d1=file4[file4['y'] == 0]['套现模型得分'].dropna()
-d2=file4[file4['y'] == 1]['套现模型得分'].dropna()
+    if file4['得分'][i]=='null':
+        file4['得分'][i]=None
+d1=file4[file4['y'] == 0]['得分'].dropna()
+d2=file4[file4['y'] == 1]['得分'].dropna()
 args=[d1,d2]
 f,p=f_oneway(*args)
 print(f,p)
@@ -104,7 +104,7 @@ for item in col_name[2:]:
 tmp1=[]
 tmp2=[]
 for i in range(1,7498):
-    target=file4['套现模型得分'][i]
+    target=file4['得分'][i]
     if str(target) != 'nan' and target != None:
         tmp1.append(float(file4['y'][i]))
         tmp2.append(float(target))
