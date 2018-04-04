@@ -31,7 +31,7 @@ from scipy.stats import spearmanr
 from scipy.stats import f_oneway
 from scipy.stats import pearsonr
 
-file4=pd.read_csv("/Users/didi/Desktop/index.txt",sep='\t',encoding='utf-8') 
+file4=pd.read_csv("/Users/emma/Desktop/index.txt",sep='\t',encoding='utf-8') 
 #（1）获取列名称
 file5=open("文件地址/index.txt","r")
 col_name=[]
@@ -111,7 +111,7 @@ for i in range(1,7498):
 pearsonr(tmp1,tmp2)
 '''
 
-file6=open("/Users/didi/Desktop/corr1.txt","w")
+file6=open("/Users/emma/Desktop/corr1.txt","w")
 for item in col_name[2:]:
     if item not in cate:
         tmp1=[]
